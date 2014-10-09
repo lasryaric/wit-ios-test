@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Wit/Wit.h>
+#import "WITInstanceIdFetcher.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,8 @@
     [Wit sharedInstance].accessToken = @"NPFHUYN6IHRUUDTLLJRPBQCKAE7NKSSZ"; // replace xxx by your Wit.AI access token
     //enabling detectSpeechStop will automatically stop listening the microphone when the user stop talking
     [Wit sharedInstance].detectSpeechStop = YES;
+    WITInstanceIdFetcher *wiif = [[WITInstanceIdFetcher alloc] init];
+    [wiif get];
     
     return YES;
 }
