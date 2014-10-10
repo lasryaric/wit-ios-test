@@ -114,8 +114,11 @@
     statusView.text = @"";
     if (e) {
         NSLog(@"[Wit] error: %@", [e localizedDescription]);
-        statusView.text = @"Something went wrong";
-                entitiesView.text = [e localizedDescription];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            statusView.text = [NSString stringWithFormat:@"Error: %@", [e localizedDescription]];
+        });
+
+        
         return;
     }
     
